@@ -1,0 +1,93 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    " " : {
+
+    },
+    "%lf" : {
+
+    },
+    "%lld" : {
+
+    },
+    "AppName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MinimalSettingsDocApp"
+          }
+        }
+      }
+    },
+    "Done" : {
+
+    },
+    "Double" : {
+
+    },
+    "EC.unknown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown"
+          }
+        }
+      }
+    },
+    "Integer" : {
+
+    },
+    "LeafCapsuleBottomLeading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bottom Leading"
+          }
+        }
+      }
+    },
+    "LeafCapsuleBottomTrailing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bottom Trailing"
+          }
+        }
+      }
+    },
+    "LeafCapsuleTopLeading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top Leading"
+          }
+        }
+      }
+    },
+    "LeafCapsuleTopTrailing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top Trailing"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
