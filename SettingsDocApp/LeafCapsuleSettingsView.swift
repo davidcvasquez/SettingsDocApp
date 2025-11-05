@@ -12,6 +12,10 @@ public struct LeafCapsuleSettingsView: View {
     let leafCapsuleSettings: LeafCapsuleSettings
 
     public static let settingViewStack: SettingViewStack = [
+        SettingViewStackItem(id: .leafCapsuleScaleToFitID,
+                             key: .leafCapsuleScaleToFitKey,
+                             iconName: .system(name: "rectangle")),
+
         // Capsule Radii Corners
         SettingViewStackItem(id: .leafCapsuleTopLeadingID,
                              key: .leafCapsuleTopLeadingKey,
@@ -24,8 +28,13 @@ public struct LeafCapsuleSettingsView: View {
                              iconName: .system(name: "rectangle")),
         SettingViewStackItem(id: .leafCapsuleTopTrailingID,
                              key: .leafCapsuleTopTrailingKey,
+                             iconName: .system(name: "rectangle")),
+
+        // Angle
+        SettingViewStackItem(id: .leafCapsuleAngleID,
+                             key: .leafCapsuleAngleKey,
                              iconName: .system(name: "rectangle"))
-    ]
+   ]
 
     public var body: some View {
         SettingViewStackView(settingViewStack: Self.settingViewStack,

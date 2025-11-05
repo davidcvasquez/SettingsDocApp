@@ -12,9 +12,14 @@ import UniformTypeIdentifiers
 struct SettingsDocument: FileDocument, Codable {
     static var readableContentTypes: [UTType] { [.json] }
 
+    // Manual set up values.
     var intValue: Int = 50
     var doubleValue: Double = 25.0   // 0...100 in steps of 0.5 via UI
+
+    // DocumentSettings-based values.
+    var scaleToFit: Bool = true
     var radii: UnevenRoundedRectangleCornerRadii = .defaultCapsule
+    var rotation: Double = 0.0
 
     init() {}
 
@@ -33,4 +38,3 @@ struct SettingsDocument: FileDocument, Codable {
         return .init(regularFileWithContents: data)
     }
 }
-

@@ -13,8 +13,12 @@ public extension LocalizedStringKey {
     static var unknownErrorKey = LocalizedStringKey(.unknownError)
     static var appNameKey = LocalizedStringKey("AppName")
 
+    static var leafCapsuleScaleToFitKey = LocalizedStringKey("LeafCapsuleScaleToFit")
+
     static var leafCapsuleTopLeadingKey = LocalizedStringKey("LeafCapsuleTopLeading")
     static var leafCapsuleBottomLeadingKey = LocalizedStringKey("LeafCapsuleBottomLeading")
     static var leafCapsuleBottomTrailingKey = LocalizedStringKey("LeafCapsuleBottomTrailing")
     static var leafCapsuleTopTrailingKey = LocalizedStringKey("LeafCapsuleTopTrailing")
+
+    static var leafCapsuleAngleKey = LocalizedStringKey("LeafCapsuleAngle")
 }

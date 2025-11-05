@@ -24,6 +24,9 @@
         }
       }
     },
+    "DocumentSettings Values" : {
+
+    },
     "Done" : {
 
     },
@@ -44,6 +47,17 @@
     "Integer" : {
 
     },
+    "LeafCapsuleAngle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotation"
+          }
+        }
+      }
+    },
     "LeafCapsuleBottomLeading" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -62,6 +76,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bottom Trailing"
+          }
+        }
+      }
+    },
+    "LeafCapsuleScaleToFit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scale to Fit"
           }
         }
       }
@@ -87,6 +112,9 @@
           }
         }
       }
+    },
+    "Manual Setup" : {
+
     }
   },
   "version" : "1.0"
