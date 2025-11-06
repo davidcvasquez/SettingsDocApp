@@ -50,7 +50,7 @@ public struct LeafCapsuleSettings {
     }
 
     private static var capsuleCornerStep: Double {
-        0.01
+        0.1
     }
 
     public var leafCapsuleTopLeadingSetting: FloatSetting {

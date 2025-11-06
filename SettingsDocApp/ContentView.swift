@@ -31,77 +31,81 @@ struct ContentView: View {
     }
 
     var body: some View {
-        List {
-            Text("Manual Setup")
+        ScrollView {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Manual Setup")
+                Divider()
 
-            // Integer controls
-            HStack {
-                Text("Integer")
-                Spacer()
-                Slider(value: intAsDouble, in: 0...100, step: 1,
-                       onEditingChanged: { isEditing in
-                    if isEditing { focusedField = nil }  // dismiss keyboard/focus when drag starts
-                })
-
-                TextField("", value: $document.intValue, format: .number)
-                    .textFieldStyle(.roundedBorder)
-                    .focused($focusedField, equals: .int)
+                // Integer controls
+                HStack {
+                    Text("Integer")
+                    Spacer()
+                    Slider(value: intAsDouble, in: 0...100, step: 1,
+                           onEditingChanged: { isEditing in
+                        if isEditing { focusedField = nil }  // dismiss keyboard/focus when drag starts
+                    })
+                    
+                    TextField("", value: $document.intValue, format: .number)
+                        .textFieldStyle(.roundedBorder)
+                        .focused($focusedField, equals: .int)
 #if os(iOS)
-                    .keyboardType(.numberPad)
+                        .keyboardType(.numberPad)
+                        .submitLabel(.done)
+#endif
+                        .textFieldStyle(.roundedBorder)
+                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
+                        .frame(
+                            width: 80
+                        )
+                }
+                
+                // Double controls (0...100, step 0.5)
+                HStack {
+                    Text("Double")
+                    Spacer()
+                    Slider(value: $document.doubleValue, in: 0...100, step: 0.5,
+                           onEditingChanged: { isEditing in
+                        if isEditing { focusedField = nil }  // dismiss keyboard/focus when drag starts
+                    })
+                    
+                    TextField("",
+                              value: $document.doubleValue,
+                              format: .number.precision(.fractionLength(0...1)))
+                    .textFieldStyle(.roundedBorder)
+                    .focused($focusedField, equals: .dbl)
+#if os(iOS)
+                    .keyboardType(.decimalPad)
                     .submitLabel(.done)
 #endif
+                    // Keep text edits clamped & snapped like the slider
+                    .onChange(of: document.doubleValue) { _, v in
+                        let clamped = min(max(v, 0), 100)
+                        let snapped = snapToHalf(clamped)
+                        if snapped != document.doubleValue { document.doubleValue = snapped }
+                    }
                     .textFieldStyle(.roundedBorder)
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
                     .frame(
                         width: 80
                     )
-            }
-
-            // Double controls (0...100, step 0.5)
-            HStack {
-                Text("Double")
-                Spacer()
-                Slider(value: $document.doubleValue, in: 0...100, step: 0.5,
-                       onEditingChanged: { isEditing in
-                    if isEditing { focusedField = nil }  // dismiss keyboard/focus when drag starts
-                })
-
-                TextField("",
-                          value: $document.doubleValue,
-                          format: .number.precision(.fractionLength(0...1)))
-                .textFieldStyle(.roundedBorder)
-                .focused($focusedField, equals: .dbl)
-#if os(iOS)
-                .keyboardType(.decimalPad)
-                .submitLabel(.done)
-#endif
-                // Keep text edits clamped & snapped like the slider
-                .onChange(of: document.doubleValue) { _, v in
-                    let clamped = min(max(v, 0), 100)
-                    let snapped = snapToHalf(clamped)
-                    if snapped != document.doubleValue { document.doubleValue = snapped }
                 }
-                .textFieldStyle(.roundedBorder)
-                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
-                .frame(
-                    width: 80
-                )
+                
+                Text("DocumentSettings Values")
+                    .padding(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
+                Divider()
+                LeafCapsuleSettingsView(leafCapsuleSettings: leafCapsuleSettings)
             }
-
-            Text("DocumentSettings Values")
-                .padding(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
-            LeafCapsuleSettingsView(leafCapsuleSettings: leafCapsuleSettings)
-        }
-        .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
-        .frame(minWidth: 320, minHeight: 320)
-    #if os(iOS)
-        // A small toolbar above the keyboard with a Done button
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button("Done") { focusedField = nil }
+            .padding(EdgeInsets(top: 16, leading: 16, bottom: 40, trailing: 12))
+            .frame(minWidth: 320, minHeight: 320)
+#if os(iOS)
+            // A small toolbar above the keyboard with a Done button
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") { focusedField = nil }
+                }
             }
+#endif
         }
-    #endif
     }
 }
